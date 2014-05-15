@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_view"
+    android:layout_width="match_parent"
+    android:paddingRight="40dp"
+    android:paddingLeft="40dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:layout_height="match_parent"
+    tools:context=".CategoryLayout" 
+    android:background="@drawable/layoutxml">
+
+    <GridView
+        android:id="@+id/gridcategories"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:numColumns="4"
+        android:stretchMode="columnWidth" >
+    </GridView>
+
+</RelativeLayout>

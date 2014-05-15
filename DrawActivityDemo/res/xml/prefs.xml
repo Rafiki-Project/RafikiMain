@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <PreferenceCategory
+        android:summary="fav settings categroy"
+        android:title="Fav Settings" >
+    <Preference 
+        android:title="Edit Favorites"
+        android:key="editFav"
+        android:summary="fav desc">
+    </Preference>
+    
+    <Preference 
+        android:title="Clear Favorites"
+        android:key="clearFav"
+        android:summary="fav desc">
+    </Preference>
+    
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:summary="connection settings categroy"
+        android:title="Connection Settings" >
+    <Preference 
+        android:title="Wifi"
+        android:key="wifi"
+        android:summary="wifi desc">
+    </Preference>
+    
+    <Preference 
+        android:title="Bluetooth"
+        android:key="bluetooth"
+        android:summary="bluetooth desc">
+    </Preference>
+    
+    </PreferenceCategory>
+    
+    
+    <PreferenceCategory
+        android:summary="tv settings categroy"
+        android:title="TV Settings" >
+       <Preference
+            android:key="mediaVloumeKey"
+            android:summary="media volume"
+            android:title="Media Volume" >
+        </Preference>
+        <Preference
+            android:key="systemVloumeKey"
+            android:summary="system volume"
+            android:title="System Volume" >
+        </Preference>
+        
+        <!-- animation styles -->
+        <ListPreference
+            android:entries="@array/listOptions"
+            android:entryValues="@array/listValues"
+            android:key="animlistpref"
+            android:summary="List preference example"
+            android:title="Animation Style" />
+
+        <!-- slider place -->
+        <ListPreference
+            android:entries="@array/listOptions"
+            android:entryValues="@array/listValues"
+            android:key="sliderlistpref"
+            android:summary="List preference example"
+            android:title="Slider place" />
+  
+          <Preference 
+        android:title="Date and Time"
+        android:key="dateAndTime"
+        android:summary="date and time desc">
+    </Preference>
+        
+        </PreferenceCategory>
+
+</PreferenceScreen>
