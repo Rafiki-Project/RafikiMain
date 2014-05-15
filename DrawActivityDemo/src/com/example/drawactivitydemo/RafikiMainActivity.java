@@ -54,6 +54,11 @@ public class RafikiMainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+	
+	@Override
+	public void onBackPressed() {
+	
+	}
 
 	public class PacReceiver extends BroadcastReceiver {
 

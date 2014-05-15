@@ -5,78 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/raifkilauncherbackground"
-    tools:context=".RafikiMainActivity" 
-    android:keepScreenOn="true">
+    android:keepScreenOn="true"
+    tools:context=".RafikiMainActivity" >
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@drawable/raifkilauncherbackground"
+        android:orientation="vertical"
         android:weightSum="3" >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
+            android:layout_weight="0.7"
             android:gravity="center"
-            android:layout_weight="0.7" android:weightSum="7">
+            android:orientation="horizontal"
+            android:weightSum="7" >
 
             <ImageView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:layout_weight="2.46"
+                android:layout_gravity="center"
                 android:src="@drawable/rafikilogotransparent" />
-
         </LinearLayout>
 
-        <GridView
-            android:id="@+id/content"
-            android:layout_width="wrap_content"
+        <LinearLayout android:layout_width="fill_parent"
             android:layout_height="0dp"
+            android:orientation="horizontal"
             android:layout_weight="1.7"
-            android:gravity="center"
-            android:horizontalSpacing="20dp"
-            android:numColumns="2"
-            android:stretchMode="columnWidth">
-        </GridView>
+            android:padding="5dip" >
+
+            <GridView
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:horizontalSpacing="20dp"
+                android:numColumns="2"
+                android:stretchMode="columnWidth" >
+            </GridView>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.6" >
+
         </LinearLayout>
     </LinearLayout>
 
-    <!--
-         <SlidingDrawer
-        android:id="@+id/drawer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:content="@+id/content"
-        android:handle="@+id/handle" >
 
-        <ImageView
-            android:id="@+id/handle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_launcher" />
-
-        <GridView
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/Black_transparent"
-            android:columnWidth="90dp"
-            android:gravity="center"
-            android:horizontalSpacing="50dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="50dp" >
-            
-        </GridView>
-    </SlidingDrawer>
-    -->
 
 </RelativeLayout>
