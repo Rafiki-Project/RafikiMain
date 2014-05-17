@@ -1,57 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_view"
+    
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/raifkilauncherbackground"
+    
     android:keepScreenOn="true"
     tools:context=".RafikiMainActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/raifkilauncherbackground"
+        android:background="@drawable/rafiki_back"
         android:orientation="vertical"
         android:weightSum="3" >
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.7"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="7" >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@drawable/rafikilogotransparent" />
-        </LinearLayout>
 
         <LinearLayout android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            android:layout_weight="1.7"
+            android:layout_weight="2"
+            android:padding="5dip" android:weightSum="5">
+        <LinearLayout android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:weightSum="2"
             android:padding="5dip" >
 
-            <GridView
-                android:id="@+id/content"
-                android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_main_category_buttons"
+                android:layout_marginBottom="5dp"
+                 />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_main_category_buttons"
+                 />
+            
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="5dip" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:horizontalSpacing="20dp"
-                android:numColumns="2"
-                android:stretchMode="columnWidth" >
-            </GridView>
+                android:src="@drawable/rafiki_logo" />
+             
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:padding="5dip" >
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/launcher_main_category_buttons" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_main_category_buttons" />
+            
+        </LinearLayout>
+            
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.6" >
+            android:gravity="center"
+            android:layout_weight="1" android:weightSum="5"
+            android:layout_marginBottom="15dp">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/launcher_category_buttons"
+                android:text="Apps" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/launcher_category_buttons"
+                android:text="Social" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/launcher_category_buttons"
+                android:text="Settings" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/launcher_category_buttons"
+                android:text="Favorites" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/launcher_category_buttons"
+                android:text="Media" />
 
         </LinearLayout>
     </LinearLayout>

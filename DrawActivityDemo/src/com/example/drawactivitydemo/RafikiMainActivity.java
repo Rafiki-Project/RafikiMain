@@ -28,9 +28,9 @@ public class RafikiMainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rafiki_launcher);
 		packageManager = getPackageManager();
-		drawerGrid = (GridView) findViewById(R.id.content);
-		homeView = (RelativeLayout) findViewById(R.id.home_view);
-		set_pacs();
+//		drawerGrid = new GridView(getApplicationContext());
+		
+//		set_pacs();
 		
 
         Toast.makeText(this, "start new service", Toast.LENGTH_LONG).show();
