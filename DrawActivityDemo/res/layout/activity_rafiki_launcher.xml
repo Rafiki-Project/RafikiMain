@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    
     android:keepScreenOn="true"
     tools:context=".RafikiMainActivity" >
 
@@ -15,134 +13,139 @@
         android:orientation="vertical"
         android:weightSum="3" >
 
-        <LinearLayout android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="0dp"
+            android:layout_weight="2"
             android:orientation="horizontal"
-            android:layout_weight="2"
-            android:padding="5dip" android:weightSum="5">
-        <LinearLayout android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:layout_weight="2"
-            android:weightSum="2"
-            android:padding="5dip" >
+            android:padding="5dip"
+            android:weightSum="5" >
 
-            <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:padding="5dip"
+                android:weightSum="2" >
+
+                <ImageButton
+                    android:id="@+id/imageButton1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/launcher_main_category_buttons" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/launcher_main_category_buttons" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@drawable/launcher_main_category_buttons"
-                android:layout_marginBottom="5dp"
-                 />
+                android:orientation="vertical"
+                android:padding="5dip" >
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/launcher_main_category_buttons"
-                 />
-            
-        </LinearLayout>
-        <LinearLayout android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:padding="5dip" >
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rafiki_logo" />
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/rafiki_logo" />
-             
-        </LinearLayout>
-        <LinearLayout android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:layout_weight="2"
-            android:padding="5dip" >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:padding="5dip" >
 
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/launcher_main_category_buttons" />
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/launcher_main_category_buttons" />
 
-            <ImageButton
-                android:id="@+id/imageButton4"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/launcher_main_category_buttons" />
-            
-        </LinearLayout>
-            
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/launcher_main_category_buttons" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_weight="1" android:weightSum="5"
-            android:layout_marginBottom="15dp">
+            android:weightSum="5" >
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/launcher_category_buttons"
+                android:drawableTop="@drawable/ic_rafiki_apps"
                 android:text="Apps" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/launcher_category_buttons"
+                android:drawableTop="@drawable/ic_rafiki_social"
                 android:text="Social" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/launcher_category_buttons"
+                android:drawableTop="@drawable/ic_rafiki_settings"
                 android:text="Settings" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/launcher_category_buttons"
+                android:drawableTop="@drawable/ic_rafiki_favorites"
                 android:text="Favorites" />
 
             <Button
                 android:id="@+id/button5"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
+                android:layout_weight="1"
                 android:background="@drawable/launcher_category_buttons"
+                android:drawableTop="@drawable/ic_rafiki_media"
                 android:text="Media" />
-
         </LinearLayout>
     </LinearLayout>
-
-
 
 </RelativeLayout>
