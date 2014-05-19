@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/Black_transparent"
+        android:background="@drawable/appswapper"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:padding="5dp" >
@@ -20,35 +20,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_apps" />
+            android:src="@drawable/ic_rafiki_apps" 
+            android:background="@drawable/launcher_category_buttons"/>
 
         <ImageButton
             android:id="@+id/imageButtonMedia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_music" />
+            android:src="@drawable/ic_rafiki_media"
+             android:background="@drawable/launcher_category_buttons" />
 
         <ImageButton
             android:id="@+id/imageButtonSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_settings" />
+            android:src="@drawable/ic_rafiki_settings"
+             android:background="@drawable/launcher_category_buttons" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_favorites" />
+            android:src="@drawable/ic_rafiki_favorites"
+             android:background="@drawable/launcher_category_buttons" />
 
         <ImageButton
             android:id="@+id/imageButtonSocial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_social" />
+            android:src="@drawable/ic_rafiki_social"
+             android:background="@drawable/launcher_category_buttons" />
     </LinearLayout>
 
 </RelativeLayout>

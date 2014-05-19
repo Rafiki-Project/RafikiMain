@@ -113,7 +113,7 @@ public class SwaperService extends Service {
 					WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
 					PixelFormat.TRANSPARENT);
 
-			params1.gravity = Gravity.BOTTOM | Gravity.LEFT;
+			params1.gravity = Gravity.CENTER | Gravity.LEFT;
 			params.gravity = Gravity.TOP | Gravity.CENTER;
 
 			wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
@@ -141,7 +141,7 @@ public class SwaperService extends Service {
 			TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 65,
 					getResources().getDisplayMetrics());
 			toggleButton = new ToggleButton(this);
-			toggleButton.setBackgroundColor(Color.GRAY);
+			toggleButton.setBackground(getResources().getDrawable(R.drawable.appswappertoggle));
 			// toggleButton.setBackground(getResources().getDrawable(
 			// R.drawable.ic_launcher));
 			imgButtonFavorite = (ImageButton) mTopView
@@ -282,11 +282,11 @@ public class SwaperService extends Service {
 			imgButtonSocial.getLayoutParams().height = (int) sizeForOneIcon;
 int sizeForOneImage= (int) sizeForOneIcon;
 			
-			Bitmap apps = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.apps) ;
-			Bitmap favorite = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.favorite) ;
-			Bitmap social = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.social) ;
-			Bitmap music = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.music) ;
-			Bitmap settings = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.settings) ;
+			Bitmap apps = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_apps) ;
+			Bitmap favorite = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_favorites) ;
+			Bitmap social = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_social) ;
+			Bitmap music = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_media) ;
+			Bitmap settings = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_settings) ;
 			
 			
 		
