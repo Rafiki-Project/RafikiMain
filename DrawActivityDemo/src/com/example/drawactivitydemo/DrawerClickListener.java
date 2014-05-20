@@ -20,7 +20,7 @@ public class DrawerClickListener implements OnItemClickListener {
 	private Pac[] pacsForAdapter;
 	private PackageManager pmForListener;
 	private ArrayList<Pac> pacsList = null;
-	private ViewGroup mTopView ;
+	private View mTopView ;
 	private View sawperView;
 	
 	private WindowManager windowManger;
@@ -34,7 +34,7 @@ public class DrawerClickListener implements OnItemClickListener {
 	}
 
 	public DrawerClickListener(WindowManager windowManger,Context context, ArrayList<Pac> pacs,
-			PackageManager pm,ViewGroup mTopView, View sawperView) {
+			PackageManager pm,View mTopView, View sawperView) {
 
 		this.mainActivityContext = context;
 		this.pacsList = pacs;

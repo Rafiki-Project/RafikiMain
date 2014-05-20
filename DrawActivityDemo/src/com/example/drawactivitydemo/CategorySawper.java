@@ -21,7 +21,7 @@ public class CategorySawper {
 	
 	
 	public ArrayList<Pac> getLayout(GridView gridCategories, int catergoryFlag,
-			PackageManager pm, Context context,ViewGroup mTopView) {
+			PackageManager pm, Context context,View mTopView) {
 
 		switch (catergoryFlag) {
 
