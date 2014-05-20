@@ -1,11 +1,9 @@
 package com.example.drawactivitydemo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.SettingPackage.SettingActivity;
 
-import android.R.bool;
 import android.app.ActivityManager;
 import android.app.Service;
 
@@ -14,7 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 
 import android.os.Bundle;
@@ -28,18 +25,16 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.webkit.WebView.FindListener;
-import android.widget.Button;
+
 
 import android.widget.CompoundButton;
-import android.widget.GridView;
+
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -54,16 +49,11 @@ public class SwaperService extends Service {
 	private ToggleButton toggleButton;
 	private WindowManager wm;
 
-	private Intent social;
-	private Intent media;
-	private Intent app;
-	private Intent settings;
-	private Intent favorite;
 	private View mTopView;
 	private ViewGroup mTopViewCategory;
 	private Display display;
 	public static boolean isStarted = false;
-	public static boolean isDrawn = false;
+	public static boolean isDrawn = true;
 
 	SwaperService service = this;
 	WindowManager.LayoutParams params1;
@@ -310,58 +300,111 @@ int sizeForOneImage= (int) sizeForOneIcon;
 			imgButtonMedia.setImageBitmap(resizedMusic); 
 			imgButtonSettings.setImageBitmap(resizedSettings); 
 			imgButtonSocial.setImageBitmap(resizedSocial); 
+	//o		
+			wm.addView(mTopView, params);
+			wm.addView(toggleButton, params1);
+			toggleButton.setChecked(false);
+		
 			
-
 			toggleButton
 					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 						public void onCheckedChanged(CompoundButton buttonView,
 								boolean isChecked) {
 							if (isChecked) {
+								///el adeem///
 								// The toggle is enabled
-								Animation up = AnimationUtils.loadAnimation(
-										service.getApplicationContext(),
-										R.anim.swapperanimationdown);
-								linearLayout.startAnimation(up);
+//								Animation up = AnimationUtils.loadAnimation(
+//										service.getApplicationContext(),
+//										R.anim.swapperanimationdown);
+//								linearLayout.startAnimation(up);
+//								if (isDrawn) {
+//								}
+//
+//								else {
+//									isDrawn = true;
+//									Animation up = AnimationUtils.loadAnimation(
+//											service.getApplicationContext(),
+//											R.anim.swapperanimationdown);
+//									linearLayout.startAnimation(up);
+//
+//									wm.addView(mTopView, params);
+//								
+//
+//								}
+								
+								if (isDrawn) {
+									isDrawn = false;
+									Animation down = AnimationUtils.loadAnimation(
+											service.getApplicationContext(),
+											R.anim.swapperanimationup);
+									linearLayout.startAnimation(down);
+
+									wm.removeView(mTopView);
+							
+
+								}
+
+								else {
+
+								}
+								//5eles el adeem ///
+
+							} else {
+								
+								
+								// The toggle is disabled
+//								Animation down = AnimationUtils.loadAnimation(
+//										service.getApplicationContext(),
+//										R.anim.swapperanimationup);
+//								linearLayout.startAnimation(down);
+								
+								//eladeem mn hna 
+//								if (isDrawn) {
+//									isDrawn = false;
+//									Animation down = AnimationUtils.loadAnimation(
+//											service.getApplicationContext(),
+//											R.anim.swapperanimationup);
+//									linearLayout.startAnimation(down);
+//
+//									wm.removeView(mTopView);
+//							
+//
+//								}
+//
+//								else {
+//
+//								}
+								
+								///
+								
 								if (isDrawn) {
 								}
 
 								else {
 									isDrawn = true;
+									Animation up = AnimationUtils.loadAnimation(
+											service.getApplicationContext(),
+											R.anim.swapperanimationdown);
+									linearLayout.startAnimation(up);
 
 									wm.addView(mTopView, params);
+								
 
 								}
-
-							} else {
-								// The toggle is disabled
-								Animation down = AnimationUtils.loadAnimation(
-										service.getApplicationContext(),
-										R.anim.swapperanimationup);
-								linearLayout.startAnimation(down);
-								if (isDrawn) {
-									isDrawn = false;
-
-									wm.removeView(mTopView);
-
-								}
-
-								else {
-
-								}
-
+//5eles el adeem///////////////////////
 							}
 						}
 					});
 
-			if (isDrawn) {
-			}
-
-			else {
-				isDrawn = true;
-				wm.addView(toggleButton, params1);
-				wm.addView(mTopView, params);
-
-			}
+//			if (isDrawn) {
+//			}
+//
+//			else {
+////				isDrawn = true;
+////				wm.addView(toggleButton, params1);
+////			wm.addView(mTopView, params);
+//
+//			}
 
 			return START_STICKY;
 		}
