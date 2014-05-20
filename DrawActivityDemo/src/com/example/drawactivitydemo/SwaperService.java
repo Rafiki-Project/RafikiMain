@@ -52,7 +52,7 @@ public class SwaperService extends Service {
 	private ImageButton imgButtonApp;
 	private ImageButton imgButtonSettings;
 	private ToggleButton toggleButton;
-	private WindowManager wm;
+	private WindowManager windowManager;
 
 	private Intent social;
 	private Intent media;
@@ -74,6 +74,9 @@ public class SwaperService extends Service {
 	public static boolean settingFlag = false;
 	public static boolean categoryflag = false;
 
+	RafikiContext rafikiContext;
+	private ViewGroup category_view;
+
 	public SwaperService() {
 
 	}
@@ -89,6 +92,8 @@ public class SwaperService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+
+		rafikiContext = ((RafikiContext) getApplication());
 
 		if (isStarted) {
 
@@ -116,21 +121,23 @@ public class SwaperService extends Service {
 			params1.gravity = Gravity.BOTTOM | Gravity.LEFT;
 			params.gravity = Gravity.TOP | Gravity.CENTER;
 
-			wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+			// windowManager = (WindowManager)
+			// this.getSystemService(Context.WINDOW_SERVICE);
 
-			display = wm.getDefaultDisplay();
+			windowManager = rafikiContext.getWindowManager();
 
-			int width = wm.getDefaultDisplay().getWidth();
-			int height = wm.getDefaultDisplay().getHeight();
+			display = windowManager.getDefaultDisplay();
+
+			int width = windowManager.getDefaultDisplay().getWidth();
+			int height = windowManager.getDefaultDisplay().getHeight();
 			Toast.makeText(this, " width  " + width, Toast.LENGTH_LONG).show();
 			Toast.makeText(this, " height  " + height, Toast.LENGTH_LONG)
 					.show();
 
-			LayoutInflater inflater1 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			// mTopView = (View)
+			// inflater1.inflate(R.layout.activity_rafiki_main,null);
 
-			mTopView = (View) inflater1.inflate(R.layout.activity_rafiki_main,
-					null);
-
+			mTopView = rafikiContext.getmTopView();
 			linearLayout = (ViewGroup) mTopView.findViewById(R.id.content);
 
 			// double halfScreenWidth=printSecreenInfo();
@@ -155,20 +162,27 @@ public class SwaperService extends Service {
 			imgButtonSettings = (ImageButton) mTopView
 					.findViewById(R.id.imageButtonSettings);
 
+			
+			
 			imgButtonFavorite.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					if (categoryflag
-							& (DrawCategoryWindow.mTopViewCategory != null)) {
-						wm.removeView(DrawCategoryWindow.mTopViewCategory);
+					if (categoryflag & (DrawCategoryWindow.mTopViewCategory != null)) {
+						Animation down = AnimationUtils.loadAnimation(service.getApplicationContext(),R.anim.slide_up);
+						category_view =  (ViewGroup) DrawCategoryWindow.mTopViewCategory.findViewById(R.id.categoriescontent);
+						category_view.startAnimation(down);
+						
+						
+						windowManager.removeView(DrawCategoryWindow.mTopViewCategory);
 					}
 					// check for setting actvity
 					if (isForeground("")) {
 
 						finishSettingActivity();
 					}
-					new DrawCategoryWindow(wm, mTopView, SwaperService.this,
-							mTopViewCategory, getPackageManager(), 4);
+					new DrawCategoryWindow(windowManager, mTopView,
+							SwaperService.this, mTopViewCategory,
+							getPackageManager(), 4);
 					categoryflag = true;
 				}
 			});
@@ -179,15 +193,17 @@ public class SwaperService extends Service {
 					// TODO Auto-generated method stub
 					if (categoryflag
 							& (DrawCategoryWindow.mTopViewCategory != null)) {
-						wm.removeView(DrawCategoryWindow.mTopViewCategory);
+						windowManager
+								.removeView(DrawCategoryWindow.mTopViewCategory);
 					}
 					if (isForeground("")) {
 
 						finishSettingActivity();
 					}
 
-					new DrawCategoryWindow(wm, mTopView, SwaperService.this,
-							mTopViewCategory, getPackageManager(), 2);
+					new DrawCategoryWindow(windowManager, mTopView,
+							SwaperService.this, mTopViewCategory,
+							getPackageManager(), 2);
 					categoryflag = true;
 				}
 			});
@@ -200,15 +216,17 @@ public class SwaperService extends Service {
 
 					if (categoryflag
 							& (DrawCategoryWindow.mTopViewCategory != null)) {
-						wm.removeView(DrawCategoryWindow.mTopViewCategory);
+						windowManager
+								.removeView(DrawCategoryWindow.mTopViewCategory);
 					}
 
 					if (isForeground("")) {
 
 						finishSettingActivity();
 					}
-					new DrawCategoryWindow(wm, mTopView, SwaperService.this,
-							mTopViewCategory, getPackageManager(), 1);
+					new DrawCategoryWindow(windowManager, mTopView,
+							SwaperService.this, mTopViewCategory,
+							getPackageManager(), 1);
 					categoryflag = true;
 				}
 			});
@@ -220,7 +238,8 @@ public class SwaperService extends Service {
 
 					if (categoryflag
 							& (DrawCategoryWindow.mTopViewCategory != null)) {
-						wm.removeView(DrawCategoryWindow.mTopViewCategory);
+						windowManager
+								.removeView(DrawCategoryWindow.mTopViewCategory);
 					}
 
 					if (isForeground("")) {
@@ -228,8 +247,9 @@ public class SwaperService extends Service {
 						finishSettingActivity();
 					}
 
-					new DrawCategoryWindow(wm, mTopView,SwaperService.this,
-							mTopViewCategory, getPackageManager(), 3);
+					new DrawCategoryWindow(windowManager, mTopView,
+							SwaperService.this, mTopViewCategory,
+							getPackageManager(), 3);
 					categoryflag = true;
 				}
 
@@ -242,7 +262,8 @@ public class SwaperService extends Service {
 					// TODO Auto-generated method stub
 					if (categoryflag
 							& (DrawCategoryWindow.mTopViewCategory != null)) {
-						wm.removeView(DrawCategoryWindow.mTopViewCategory);
+						windowManager
+								.removeView(DrawCategoryWindow.mTopViewCategory);
 					}
 
 					if (!settingFlag && (!isForeground(""))) {
@@ -277,41 +298,48 @@ public class SwaperService extends Service {
 
 			imgButtonSettings.getLayoutParams().height = (int) sizeForOneIcon;
 			imgButtonApp.getLayoutParams().height = (int) sizeForOneIcon;
+			
 			imgButtonMedia.getLayoutParams().height = (int) sizeForOneIcon;
+
 			imgButtonFavorite.getLayoutParams().height = (int) sizeForOneIcon;
 			imgButtonSocial.getLayoutParams().height = (int) sizeForOneIcon;
-int sizeForOneImage= (int) sizeForOneIcon;
-			
-			Bitmap apps = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.apps) ;
-			Bitmap favorite = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.favorite) ;
-			Bitmap social = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.social) ;
-			Bitmap music = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.music) ;
-			Bitmap settings = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.settings) ;
-			
-			
-		
+			int sizeForOneImage = (int) sizeForOneIcon;
+
+			Bitmap apps = BitmapFactory.decodeResource(
+					SwaperService.this.getResources(), R.drawable.apps);
+			Bitmap favorite = BitmapFactory.decodeResource(
+					SwaperService.this.getResources(), R.drawable.favorite);
+			Bitmap social = BitmapFactory.decodeResource(
+					SwaperService.this.getResources(), R.drawable.social);
+			Bitmap music = BitmapFactory.decodeResource(
+					SwaperService.this.getResources(), R.drawable.music);
+			Bitmap settings = BitmapFactory.decodeResource(
+					SwaperService.this.getResources(), R.drawable.settings);
+
 			Bitmap resizedApps = Bitmap.createScaledBitmap(apps,
 					(int) (sizeForOneImage), (int) (sizeForOneImage), true);
-			
+
 			Bitmap resizedFavorites = Bitmap.createScaledBitmap(favorite,
 					(int) (sizeForOneImage), (int) (sizeForOneImage), true);
-			
+
 			Bitmap resizedSocial = Bitmap.createScaledBitmap(social,
 					(int) (sizeForOneImage), (int) (sizeForOneImage), true);
-			
+
 			Bitmap resizedMusic = Bitmap.createScaledBitmap(music,
 					(int) (sizeForOneImage), (int) (sizeForOneImage), true);
-			
+
 			Bitmap resizedSettings = Bitmap.createScaledBitmap(settings,
 					(int) (sizeForOneImage), (int) (sizeForOneImage), true);
-			
-			imgButtonApp.setImageBitmap(resizedApps); 
-			imgButtonFavorite.setImageBitmap(resizedFavorites); 
-			imgButtonMedia.setImageBitmap(resizedMusic); 
-			imgButtonSettings.setImageBitmap(resizedSettings); 
-			imgButtonSocial.setImageBitmap(resizedSocial); 
-			
 
+			imgButtonApp.setImageBitmap(resizedApps);
+			imgButtonFavorite.setImageBitmap(resizedFavorites);
+			imgButtonMedia.setImageBitmap(resizedMusic);
+			imgButtonSettings.setImageBitmap(resizedSettings);
+			imgButtonSocial.setImageBitmap(resizedSocial);
+
+			
+			
+			
 			toggleButton
 					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 						public void onCheckedChanged(CompoundButton buttonView,
@@ -328,7 +356,7 @@ int sizeForOneImage= (int) sizeForOneIcon;
 								else {
 									isDrawn = true;
 
-									wm.addView(mTopView, params);
+									windowManager.addView(mTopView, params);
 
 								}
 
@@ -341,7 +369,7 @@ int sizeForOneImage= (int) sizeForOneIcon;
 								if (isDrawn) {
 									isDrawn = false;
 
-									wm.removeView(mTopView);
+									windowManager.removeView(mTopView);
 
 								}
 
@@ -358,8 +386,8 @@ int sizeForOneImage= (int) sizeForOneIcon;
 
 			else {
 				isDrawn = true;
-				wm.addView(toggleButton, params1);
-				wm.addView(mTopView, params);
+				windowManager.addView(toggleButton, params1);
+				windowManager.addView(mTopView, params);
 
 			}
 
