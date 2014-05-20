@@ -1,11 +1,9 @@
 package com.example.drawactivitydemo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.SettingPackage.SettingActivity;
 
-import android.R.bool;
 import android.app.ActivityManager;
 import android.app.Service;
 
@@ -14,7 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 
 import android.os.Bundle;
@@ -28,18 +25,15 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.webkit.WebView.FindListener;
-import android.widget.Button;
 
 import android.widget.CompoundButton;
-import android.widget.GridView;
+
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -54,16 +48,11 @@ public class SwaperService extends Service {
 	private ToggleButton toggleButton;
 	private WindowManager windowManager;
 
-	private Intent social;
-	private Intent media;
-	private Intent app;
-	private Intent settings;
-	private Intent favorite;
 	private View mTopView;
 	private ViewGroup mTopViewCategory;
 	private Display display;
 	public static boolean isStarted = false;
-	public static boolean isDrawn = false;
+	public static boolean isDrawn = true;
 
 	SwaperService service = this;
 	WindowManager.LayoutParams params1;
@@ -118,7 +107,7 @@ public class SwaperService extends Service {
 					WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
 					PixelFormat.TRANSPARENT);
 
-			params1.gravity = Gravity.BOTTOM | Gravity.LEFT;
+			params1.gravity = Gravity.CENTER | Gravity.LEFT;
 			params.gravity = Gravity.TOP | Gravity.CENTER;
 
 			// windowManager = (WindowManager)
@@ -148,7 +137,7 @@ public class SwaperService extends Service {
 			TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 65,
 					getResources().getDisplayMetrics());
 			toggleButton = new ToggleButton(this);
-			toggleButton.setBackgroundColor(Color.GRAY);
+			toggleButton.setBackground(getResources().getDrawable(R.drawable.appswappertoggle));
 			// toggleButton.setBackground(getResources().getDrawable(
 			// R.drawable.ic_launcher));
 			imgButtonFavorite = (ImageButton) mTopView
@@ -305,16 +294,17 @@ public class SwaperService extends Service {
 			imgButtonSocial.getLayoutParams().height = (int) sizeForOneIcon;
 			int sizeForOneImage = (int) sizeForOneIcon;
 
-			Bitmap apps = BitmapFactory.decodeResource(
-					SwaperService.this.getResources(), R.drawable.apps);
-			Bitmap favorite = BitmapFactory.decodeResource(
-					SwaperService.this.getResources(), R.drawable.favorite);
-			Bitmap social = BitmapFactory.decodeResource(
-					SwaperService.this.getResources(), R.drawable.social);
-			Bitmap music = BitmapFactory.decodeResource(
-					SwaperService.this.getResources(), R.drawable.music);
-			Bitmap settings = BitmapFactory.decodeResource(
-					SwaperService.this.getResources(), R.drawable.settings);
+
+			
+			
+			Bitmap apps = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_apps) ;
+			Bitmap favorite = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_favorites) ;
+			Bitmap social = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_social) ;
+			Bitmap music = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_media) ;
+			Bitmap settings = BitmapFactory.decodeResource(SwaperService.this.getResources(), R.drawable.ic_rafiki_settings) ;
+			
+			
+		
 
 			Bitmap resizedApps = Bitmap.createScaledBitmap(apps,
 					(int) (sizeForOneImage), (int) (sizeForOneImage), true);
@@ -340,56 +330,102 @@ public class SwaperService extends Service {
 			
 			
 			
+			imgButtonApp.setImageBitmap(resizedApps); 
+			imgButtonFavorite.setImageBitmap(resizedFavorites); 
+			imgButtonMedia.setImageBitmap(resizedMusic); 
+			imgButtonSettings.setImageBitmap(resizedSettings); 
+			imgButtonSocial.setImageBitmap(resizedSocial); 
+
+			windowManager.addView(mTopView, params);
+			windowManager.addView(toggleButton, params1);
+			toggleButton.setChecked(false);
+		
 			toggleButton
 					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 						public void onCheckedChanged(CompoundButton buttonView,
 								boolean isChecked) {
+							
 							if (isChecked) {
+								///el adeem///
 								// The toggle is enabled
-								Animation up = AnimationUtils.loadAnimation(
-										service.getApplicationContext(),
-										R.anim.swapperanimationdown);
-								linearLayout.startAnimation(up);
+								// Animation up = AnimationUtils.loadAnimation(
+								// service.getApplicationContext(),
+								// R.anim.swapperanimationdown);
+								// linearLayout.startAnimation(up);
+								// if (isDrawn) {
+								// }
+								//
+								// else {
+								// isDrawn = true;
+								// Animation up = AnimationUtils.loadAnimation(
+								// service.getApplicationContext(),
+								// R.anim.swapperanimationdown);
+								// linearLayout.startAnimation(up);
+								//
+								// wm.addView(mTopView, params);
+								// 
+								//
+								// }
 								if (isDrawn) {
-								}
-
-								else {
-									isDrawn = true;
-
-									windowManager.addView(mTopView, params);
-
-								}
-
-							} else {
-								// The toggle is disabled
+								isDrawn = false;
 								Animation down = AnimationUtils.loadAnimation(
-										service.getApplicationContext(),
-										R.anim.swapperanimationup);
+								service.getApplicationContext(),
+								R.anim.swapperanimationup);
 								linearLayout.startAnimation(down);
-								if (isDrawn) {
-									isDrawn = false;
-
-									windowManager.removeView(mTopView);
+								windowManager.removeView(mTopView);
 
 								}
-
 								else {
+								}
+								//5eles el adeem ///
+								} else {
+
+								// The toggle is disabled
+								// Animation down = AnimationUtils.loadAnimation(
+								// service.getApplicationContext(),
+								// R.anim.swapperanimationup);
+								// linearLayout.startAnimation(down);
+								//eladeem mn hna 
+								// if (isDrawn) {
+								// isDrawn = false;
+								// Animation down = AnimationUtils.loadAnimation(
+								// service.getApplicationContext(),
+								// R.anim.swapperanimationup);
+								// linearLayout.startAnimation(down);
+								//
+								// wm.removeView(mTopView);
+								// 
+								//
+								// }
+								//
+								// else {
+								//
+								// }
+								///
+								if (isDrawn) {
+								}
+								else {
+								isDrawn = true;
+								Animation up = AnimationUtils.loadAnimation(
+								service.getApplicationContext(),
+								R.anim.swapperanimationdown);
+								linearLayout.startAnimation(up);
+								windowManager.addView(mTopView, params);
 
 								}
+								//5eles el adeem///////////////////////
+								}
+						}});
 
-							}
-						}
-					});
-
-			if (isDrawn) {
-			}
-
-			else {
-				isDrawn = true;
-				windowManager.addView(toggleButton, params1);
-				windowManager.addView(mTopView, params);
-
-			}
+						//			if (isDrawn) {
+//			}
+//
+//			else {
+////				isDrawn = true;
+////				wm.addView(toggleButton, params1);
+////			wm.addView(mTopView, params);
+//
+//			}
 
 			return START_STICKY;
 		}

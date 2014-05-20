@@ -8,8 +8,17 @@
     android:paddingBottom="20dp"
     android:layout_height="match_parent"
     tools:context=".CategoryLayout" 
-    android:background="@drawable/layoutxml">
-
+    >
+    <LinearLayout
+        android:id="@+id/categoriescontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/layoutxml"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="5dp" >
     <GridView
         android:id="@+id/gridcategories"
         android:layout_width="match_parent"
@@ -18,5 +27,5 @@
         android:numColumns="4"
         android:stretchMode="columnWidth" >
     </GridView>
-
+</LinearLayout>
 </RelativeLayout>
