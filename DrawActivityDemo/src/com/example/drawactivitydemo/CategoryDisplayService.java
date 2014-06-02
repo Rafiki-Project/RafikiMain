@@ -13,6 +13,7 @@ import android.view.WindowManager.LayoutParams;
 
 public class CategoryDisplayService extends Service {
 	ViewGroup mTopView;
+	private String x;
 
 	@Override
 	public IBinder onBind(Intent arg0) {
